@@ -1,0 +1,148 @@
+# --------------------------------------------------------------------------Hangman----------------------
+# import random
+
+
+# def display_word(history, word):
+#     display_letters = []
+#     for letter in word:
+#         if letter in history:
+#             display_letters.append(letter)
+#         else:
+#             display_letters.append("_")
+
+#     return " ".join(display_letters)
+
+
+# def get_user_input(history):
+#     user_letter = input("guess a letter: ")
+#     if len(user_letter) > 1:
+#         print("you can use only one letter")
+#         return
+
+#     if user_letter in history:
+#         print("you used this letter")
+#         return
+#     # else:
+#     history.append(user_letter)
+
+#     return user_letter
+
+
+# def play_game(word, body_parts):
+#     history = []
+#     gallows = []
+#     i = 0  # failed guesses count starts
+
+#     while True:
+#         answered_word = display_word(history, word)
+#         print(answered_word)
+        
+#         user_letter = get_user_input(history)
+#         if user_letter is None:
+#             continue
+
+#         if user_letter in word:
+#             answered_word = display_word(history, word)
+#             if not "_" in answered_word:
+#                 print("you win")
+#                 break
+
+#         else:
+#             if i == len(body_parts):
+#                 print("game over")
+#                 break
+#             gallows.append(body_parts[i])
+#             i += 1
+#             print(" ".join(gallows))
+
+
+
+# body_parts = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
+# wordslist = ['correction', 'childish', 'beach', 'python', 'assertive', 'interference', 'complete', 'share', 'credit card', 'rush', 'south']
+# word = random.choice(wordslist) 
+
+# play_game(word, body_parts)
+
+# --------------------------------------------------------------------------TicTacToe----------------------
+
+def welcome():
+    print("Welcome to TIC TAC TOE!")
+
+
+def display_board(values):
+
+    print("\n")
+
+    print("\t     |     |")
+    print("\t  {}  |  {}  |  {}".format(values[0][0], values[0][1], values[0][2]))
+    print('\t_____|_____|_____')
+ 
+    print("\t     |     |")
+    print("\t  {}  |  {}  |  {}".format(values[1][0], values[1][1], values[1][2]))
+    print('\t_____|_____|_____')
+ 
+    print("\t     |     |")
+    print("\t  {}  |  {}  |  {}".format(values[2][0], values[2][1], values[2][2]))
+    print("\t     |     |")
+    
+    print("\n")
+
+
+def player_input(player):
+    print(f"Player {player}'s turn ...")
+    row = input("Enter row: ")
+    col = input("Enter column: ")
+    return int(row), int(col)
+
+
+def check_win(values):
+    for y in range(3):
+        if values[y][0] == values[y][1] and values[y][1] == values[y][2]:
+            return True
+    
+    for x in range(3):
+        if values[0][x] == values[1][x] and values[1][x] == values[2][x]:
+            return True
+        
+    if values[0][0] == values[1][1] and values[1][1] == values[2][2]:
+        return True
+    
+    if values[0][2] == values[1][1] and values[1][1] == values[2][0]:
+        return True
+
+    else: 
+        return False
+
+
+
+
+welcome()
+values = [
+    [" ", " ", " "],
+    [" ", " ", " "],
+    [" ", " ", " "]
+]
+is_finished = False
+current_player = "X"
+
+while is_finished is False:
+    display_board(values)
+    row, col = player_input(current_player)
+    
+    # if ... is_empty:
+    values[row - 1][col - 1] = current_player
+
+    is_win = check_win(values)
+    is_full = False
+    
+    is_finished = False  # is_win or is_full
+    
+    if current_player == "X":
+        current_player = "O"
+        continue
+    
+    if current_player == "O":
+        current_player = "X"
+        continue
+
+print("Game finished!!")

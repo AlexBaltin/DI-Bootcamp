@@ -1,0 +1,219 @@
+# -------------------------------------------------------Exercise1-What are you learning-----------------------------------
+# 
+# def display_message():
+#     print("I'm learning OOP")
+
+# display_message()
+# prints "I'm learning OOP"
+
+# -------------------------------------------------------Exercise2-Whats your favourite book-----------------------------------
+# 
+# def favorite_book(title):
+#     print(f"One of my favorite books is {title}")
+
+# favorite_book("Alice in Wonderland")
+#   prints "One of my favorite books is Alice in Wonderland"
+# -------------------------------------------------------Exercise3-Some geography-----------------------------------
+# 
+# def describe_city(city, country):
+#     print(f"{city} is in {country}")
+# describe_city("Ramat-Gan", "Israel")
+#                                                
+# 
+# -------------------------------------------------------Exercise4-Random-----------------------------------
+# 
+# import random
+
+# def random_number(accepted_intenger):
+
+#     random_intenger = random.randint(1, 100)
+
+#     if accepted_intenger == random_intenger:
+#         print(f"success {accepted_intenger}, {random_intenger}")
+#         return True
+#     else:
+#         print(f"failed {accepted_intenger}, {random_intenger}")
+#         return False
+
+# while True:
+#     is_same = random_number(3) 
+#     if is_same == True:
+#         break
+# -------------------------------------------------------Exercise5-Let’s create some personalized shirts !-----------------------------------
+
+# def make_shirt(size = "large", text = "I love Python"):
+#     if size == "small":
+#         size = "S"
+#     if size == "medium":
+#         size = "M"  
+#     if size == "large":
+#         size = "L"
+
+
+#     print(f"The size of the shirt is {size} and the text is {text}")
+
+
+# make_shirt()
+# make_shirt("medium")
+# make_shirt("small", "LOL")
+# make_shirt(size="large", text="hello")
+# make_shirt(text="hello", size="medium")
+# -------------------------------------------------------Exercise6-Magicians -----------------------------------
+
+
+# def show_magicians(magician_names):
+#     for name in magician_names:
+#         print(name)
+
+# def make_great(magician_names):
+#     for i in range(len(magician_names)):
+#         magician_names[i] = "the Great " + magician_names[i]
+        
+
+
+# magician_names = ['Harry Houdini', 'David Blaine', 'Criss Angel']
+
+
+# show_magicians(magician_names)
+# make_great(magician_names)
+# show_magicians(magician_names)
+
+# -------------------------------------------------------Exercise7-Temperature Advice -----------------------------------
+
+# import random
+
+# def get_random_temp(season):
+#     season_ranges = {
+#         'winter': (-10, 16),
+#         'spring': (0, 22),
+#         'summer': (15, 35),
+#         'autumn': (0, 22),
+#     }
+    
+#     lower, upper = season_ranges.get(season, (-10, 40))
+#     return round(random.uniform(lower, upper), 1)
+
+
+
+# def main():
+#     season = input("Enter the season (summer, autumn, winter, spring): ").lower()
+#     temperature = get_random_temp(season)
+#     print(f"The temperature right now is {temperature} degrees Celsius.")
+    
+#     if temperature < 0:
+#         print("Brrr, that’s freezing! Wear some extra layers today.")
+#     elif 0 <= temperature <= 16:
+#         print("Quite chilly! Don’t forget your coat.")
+#     elif 17 <= temperature <= 23:
+#         print("A bit coolllll.")
+#     elif 24 <= temperature <= 32:
+#         print("Nice for a walk!")
+#     elif 33 <= temperature <= 40:
+#         print("Are we at the Dead Sea?")
+
+# main()
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------Exercises XP Gold---------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# -------------------------------------------------------Exercise 1 : When will I retire ?-----------------------------------
+
+# from datetime import datetime
+
+# def get_age(year, month, day):
+#     today = datetime.now()
+#     birth_date = datetime(year, month, day)
+#     age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+#     return age
+
+
+# def can_retire(gender, date_of_birth):
+#     year, month, day = map(int, date_of_birth.split('/'))
+#     age = get_age(year, month, day)
+    
+    
+#     retirement_age = 67 if gender == 'm' else 62
+#     return age >= retirement_age
+
+
+
+# def main():
+#     gender = input("Enter your gender (m/f): ")
+#     if gender not in ('m', 'f'):
+#         print("Incorrect, try 'm' or 'f'.")
+#         return
+    
+#     date_of_birth = input("Enter you date of birth (yyyy/mm/dd): ")
+    
+#     try:
+#         year, month, day = map(int, date_of_birth.split('/'))
+       
+#         datetime(year, month, day)
+
+#     except ValueError:
+#         print("Uncorrect format, try - yyyy/mm/dd.")
+#         return
+    
+#     if can_retire(gender, date_of_birth):
+#         print("Congratulations, you can retire!")
+
+#     else:
+#         print("Sorry, too early to retire.")
+
+# main()
+
+
+# -------------------------------------------------------Exercise 2 : Sum----------------------------------------------------
+
+# def calculate_sum(X):
+
+#     str_X = str(X)
+    
+#     XX = int(str_X + str_X)  
+#     XXX = int(str_X + str_X + str_X)
+#     XXXX = int(str_X + str_X + str_X + str_X)
+
+#     result = X + XX + XXX + XXXX
+    
+#     return result
+
+
+# print(calculate_sum(3))
+
+# -------------------------------------------------------Exercise 3 : Double Dice--------------------------------------------
+
+# import random
+
+# def throw_dice():
+#     return random.randint(1, 6)
+
+# def throw_until_doubles():
+#     count = 0  
+#     while True:
+#         die_1 = throw_dice() 
+#         die_2 = throw_dice()  
+#         count += 1
+#         if die_1 == die_2:  
+#             return count
+        
+# def main():
+#     num_tryes = 100  
+#     results = []  
+    
+#     for _ in range(num_tryes):
+#         throws_needed = throw_until_doubles()  
+#         results.append(throws_needed)
+    
+#     total_throws = sum(results)
+#     average_throws = total_throws / num_tryes
+    
+#     print(f"Total throws: {total_throws}")
+#     print(f"Average throws to reach doubles: {average_throws:.2f}")
+
+
+# main()
+
+
